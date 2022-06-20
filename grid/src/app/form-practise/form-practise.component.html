@@ -1,0 +1,35 @@
+<p>form-practise works!</p>
+
+<div class="col-12">
+<form [formGroup]="fgCustomer">
+  <div class="col-5">
+    <label for="firstName" >First Name</label>
+    <div [validate]="groupControls.firstName" controlName="First Name">
+     <input name="firstName" type="text" formControlName="firstName" />
+   </div>
+
+  </div>
+
+  <div class="col-5">
+    <label for="lastName" >Last Name</label>
+     <div [validate]="groupControls.lastName" controlName="Last Name">
+        <input name="lastName" type="text" formControlName="lastName" />
+    </div>
+  </div>
+  <input type="button" value="Add email" (click)="addPhoneControl()" />
+
+  <div *ngFor="let phonectrl of phoneField.controls; let i = index" class="col-5">
+    <label for="lastName" >Email</label>
+    <input type="text" formArrayName="phone" />
+    <span (click)="deletePhoneControl(i)" >delete</span>
+  </div>
+
+  <app-form-field [inputControl]="groupControls.dob"  [label]="'Date of birth'" >
+    <input type="text" formControlName="dob" />
+  </app-form-field>
+
+  <div>
+     <input type="submit" value="Submit" (click)="onSubmit()" />
+  </div>
+</form>
+</div>

@@ -1,0 +1,10 @@
+<div  class="form-control" [validate]="inputControl" [controlName]="label">
+  <label class="form-label">{{label}}</label>
+  <ng-container *ngIf="type" [ngSwitch]="type">
+      <textarea *ngSwitchCase="'textarea'" [formControlName]="controlName" ></textarea>
+    <ng-container *ngSwitchDefault>
+      <input  [type]="type" [formControlName]="controlName" />
+    </ng-container>
+  </ng-container>
+  <ng-content></ng-content>
+</div>
